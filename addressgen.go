@@ -20,7 +20,7 @@ import (
 //     2. Буквени - те трябва да са във вида "A..X" (т.е. само с по един символ)
 func AddressGenerator(template string) []string {
 	elems := strings.Split(template, "[")
-	allelems := make([]string, len(elems))
+	allelems := make([]string, 0)
 	for _, e := range elems {
 		tmp := strings.Split(e, "]")
 		allelems = append(allelems, tmp...)
@@ -31,9 +31,6 @@ func AddressGenerator(template string) []string {
 	}
 
 	for _, e := range allelems {
-		if len(e) == 0 {
-			continue
-		}
 		rangeEl := strings.Split(e, "..")
 		if len(rangeEl) == 1 {
 			generatorFunc = staticGenerator(generatorFunc, e)
