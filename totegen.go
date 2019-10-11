@@ -1,5 +1,7 @@
 package main
 
+import "math"
+
 //Solution - contains combination of small and big totes
 type Solution struct {
 	smallTotes int
@@ -16,6 +18,31 @@ func GetTotes(targetVolume float64, smallToteVolume float64, bigToteVolume float
 		bigToteVolume,
 		memory,
 	)
+}
+
+//GetTotes2 - returns the optimal combination of small and big totes for given targetVolume
+// variant 2
+func GetTotes2(targetVolume float64, smallToteVolume float64, bigToteVolume float64) Solution {
+	cs := int(math.Ceil(targetVolume / smallToteVolume))
+	cb := int(math.Ceil(targetVolume / bigToteVolume))
+	sol := Solution{}
+	minV := targetVolume + bigToteVolume
+
+	for s := 0; s <= cs; s++ {
+		for b := 0; b <= cb; b++ {
+			v := float64(s)*smallToteVolume + float64(b)*bigToteVolume
+			if v >= targetVolume {
+				if minV >= v {
+					minV = v
+					sol.smallTotes = s
+					sol.bigTotes = b
+				}
+				break
+			}
+		}
+	}
+
+	return sol
 }
 
 //
