@@ -7,7 +7,7 @@ import (
 )
 
 func Test1(t *testing.T) {
-	targetVolume := 1000.44
+	targetVolume := 12.44
 	sol1 := GetTotes(targetVolume, 11.14, 16.38)
 	sol2 := GetTotes(targetVolume, 11.14, 16.38)
 
