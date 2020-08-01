@@ -7,12 +7,18 @@ import (
 )
 
 func Test1(t *testing.T) {
-	targetVolume := 202.879
-	sol1 := GetTotes(targetVolume, 11.14, 16.38)
-	sol2 := GetTotes(targetVolume, 11.14, 16.38)
+	targetVolume := 108.025000
+	//9.500000
+	//14.750000
+	sol1 := GetTotes(targetVolume, 9.5, 15.00)
 
-	fmt.Printf("(1) solution = %v, target = %f, solution volume = %f\n", sol1, targetVolume, calcVolume(sol1, 11.14, 16.38))
-	fmt.Printf("(2) solution = %v, target = %f, solution volume = %f\n", sol2, targetVolume, calcVolume(sol2, 11.14, 16.38))
+	fmt.Printf("(1) solution = %v, target = %f, solution volume = %f\n", sol1,
+		targetVolume,
+		calcVolume(sol1, 9.5, 15.00))
+
+	sol2 := GetTotes(targetVolume, 11.14, 16.38)
+	fmt.Printf("(2) solution = %v, target = %f, solution volume = %f\n", sol2, targetVolume,
+		calcVolume(sol1, 11.14, 16.38))
 }
 
 func Test2(t *testing.T) {
